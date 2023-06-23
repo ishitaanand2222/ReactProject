@@ -23,19 +23,23 @@ function App() {
     padding: '8px',
     cursor: 'pointer'
   }
-
+  
+  let persons = null;
+  if(showPerson){
+    persons = (
+      <>
+      <Person name = {person[0].name} age = {person[0].age}/>
+      <Person name = {person[1].name} age = {person[1].age}/>
+      <Person name = {person[2].name} age = {person[2].age}/>
+      </>
+)
+  }
   return (
     <div className = "App">
       <h1>Hi I'm React App</h1>
       <h3>This is really working !</h3>
       <button onClick={togglePersonHandler}>Toggle Persons</button>
-
-      {showPerson ? <div>
-          <Person name = {person[0].name} age = {person[0].age}/>
-          <Person name = {person[1].name} age = {person[1].age}/>
-          <Person name = {person[2].name} age = {person[2].age}/>
-      </div> : null}
-
+      {persons}
     </div>
   );
 }
