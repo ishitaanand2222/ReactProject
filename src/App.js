@@ -28,9 +28,11 @@ function App() {
   if(showPerson){
     persons = (
       <>
-      <Person name = {person[0].name} age = {person[0].age}/>
-      <Person name = {person[1].name} age = {person[1].age}/>
-      <Person name = {person[2].name} age = {person[2].age}/>
+      <div>
+        {person.map((person) => {
+          return <Person name = {person.name} age={person.age} />
+        })}
+      </div>
       </>
 )
   }
