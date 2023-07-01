@@ -1,4 +1,5 @@
 import React from "react";
+import './Person.css';
 
 const Person = (props) => {
     console.log("hey"+props.children);
