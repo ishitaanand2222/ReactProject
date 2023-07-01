@@ -40,3 +40,11 @@
   text-decoration: line-through;
   color: green;
 }
+
+.red{
+  color:red
+}
+
+.bold{
+  font-weight: bold;
+}
