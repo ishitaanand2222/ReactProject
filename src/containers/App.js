@@ -5,6 +5,22 @@ import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component{
 
+  constructor(props){
+    super(props);
+    console.log("step1 : [App.js] constructor");
+  }
+
+  static getDerivedStateFromProps(props, state){
+    console.log("step2 : [App.js] getDerivedStateFromProps", props);
+    return state;
+  }
+
+  // componentWillMount(){
+  //   console.log("step 4 [App.js] componentWillmount")
+  // }
+  componentDidMount(){
+    console.log("step 5: [App.js] componentDidMount")
+  }
   state = {
     persons: [
       {id:'hfh11', name:"Ishita", age:22},
@@ -58,7 +74,7 @@ class App extends Component{
   }
 
   render(){
-
+    console.log("step 3 , [App.js] render");
     let persons = null;
     if(this.state.showPerson){
       persons = 

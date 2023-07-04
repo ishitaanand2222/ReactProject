@@ -1,6 +1,7 @@
 import React from "react";
 import classes from './Cockpit.module.css'
 
+//Presentational/Dumb component
 const Cockpit = (props) => {
     const assignedClasses = [];
     let btnClass = '';
