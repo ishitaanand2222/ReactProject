@@ -1,8 +1,17 @@
-import React from "react";
+import React, {useEffect} from "react";
 import classes from './Cockpit.module.css'
 
 //Presentational/Dumb component
 const Cockpit = (props) => {
+
+    useEffect(() => { //combination of componentDidUpdate and componentDidMount
+        console.log("[Cockpit.js] useEffect");
+        //http request
+        setTimeout(()=>{
+            alert("data got saved to the cloud")
+        },1000);
+    },[props.persons]);//if we pass an empty array it will run only once hence will behave as componentDidMount, as of now it will alert whenever there is a change in data
+
     const assignedClasses = [];
     let btnClass = '';
     if(props.showPerson){
