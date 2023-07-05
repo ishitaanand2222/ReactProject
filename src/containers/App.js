@@ -40,7 +40,8 @@ class App extends Component{
       {id:'iisi', name:"Paul", age:24}
     ],
     showPerson:false,
-    showCockpit: true
+    showCockpit: true,
+    changeCounter: 0
   }
 
   togglePersonHandler = () =>{
@@ -74,8 +75,13 @@ class App extends Component{
     
     persons[personIndex] = person;
     
-    this.setState({persons: persons}
-    )
+    this.setState((prevState, props) => {
+      return {
+        persons: persons,
+        changeCounter: prevState.changeCounter + 1//react gurantees it to be the previous state
+      }
+    })
+
   }
 
   deletePersonHandler = (personIndex) =>{
