@@ -1,20 +1,24 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useRef } from "react";
 import classes from './Cockpit.module.css'
+import AuthContext from "../../context/auth-context";
 
 //Presentational/Dumb component
-const Cockpit = (props) => {
+const Cockpit = props => {
+    const toggleBtnRef = useRef(null);
+    
 
     useEffect(() => { //combination of componentDidUpdate and componentDidMount
         console.log("[Cockpit.js] useEffect");
         //http request
-        setTimeout(()=>{
-            alert("data got saved to the cloud")
-        },1000);
+        // setTimeout(()=>{
+        //     alert("data got saved to the cloud")
+        // },1000);
+        toggleBtnRef.current.click();
 
         return () => {
             console.log("[Cockpit.js] cleaning in useEffect")
         }//cleaning up using useEffect
-    },[]);//if we pass an empty array it will run only once hence will behave as componentDidMount, as of now it will alert whenever there is a change in data
+    }, []);//if we pass an empty array it will run only once hence will behave as componentDidMount, as of now it will alert whenever there is a change in data
 
     useEffect(()=>{
         return () => console.log("[Cockpit.js] cleaning in 2nd useEffect")
@@ -36,7 +40,12 @@ const Cockpit = (props) => {
         <div className={classes.Cockpit}>
             <h1>{props.title}</h1>
             <p className={ assignedClasses.join(' ')}>This is really working</p>
-            <button className={btnClass} onClick={props.togglePersonHandler}>Toggle Persons</button>
+            <button  ref={toggleBtnRef} className={btnClass} onClick={props.clicked}>
+                Toggle Persons
+            </button>
+            <AuthContext.Consumer>
+                {(context) => <button onClick={context.login}>Log in</button>}
+            </AuthContext.Consumer>
         </div>
     )
 }
