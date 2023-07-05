@@ -7,11 +7,14 @@ const Cockpit = (props) => {
     useEffect(() => { //combination of componentDidUpdate and componentDidMount
         console.log("[Cockpit.js] useEffect");
         //http request
-        setTimeout(()=>{
+        const timer = setTimeout(()=>{
             alert("data got saved to the cloud")
         },1000);
 
-        return () => console.log("[Cockpit.js] cleaning in useEffect")//cleaning up using useEffect
+        return () => {
+            clearTimeout(timer);
+            console.log("[Cockpit.js] cleaning in useEffect")
+        }//cleaning up using useEffect
     },[]);//if we pass an empty array it will run only once hence will behave as componentDidMount, as of now it will alert whenever there is a change in data
 
     useEffect(()=>{
