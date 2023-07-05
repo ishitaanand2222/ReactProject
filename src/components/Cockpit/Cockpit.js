@@ -10,8 +10,13 @@ const Cockpit = (props) => {
         setTimeout(()=>{
             alert("data got saved to the cloud")
         },1000);
-    },[props.persons]);//if we pass an empty array it will run only once hence will behave as componentDidMount, as of now it will alert whenever there is a change in data
 
+        return () => console.log("[Cockpit.js] cleaning in useEffect")//cleaning up using useEffect
+    },[]);//if we pass an empty array it will run only once hence will behave as componentDidMount, as of now it will alert whenever there is a change in data
+
+    useEffect(()=>{
+        return () => console.log("[Cockpit.js] cleaning in 2nd useEffect")
+    })
     const assignedClasses = [];
     let btnClass = '';
     if(props.showPerson){
